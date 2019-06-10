@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { randomWord } from './words';
 import "./Hangman.css";
 import img0 from "./0.jpg";
 import img1 from "./1.jpg";
@@ -12,12 +13,13 @@ class Hangman extends Component {
   /** by default, allow 6 guesses and use provided gallows images. */
   static defaultProps = {
     maxWrong: 6,  // max number user can guess
+    // Future change?? maxWrong: this.state.answer.length
     images: [img0, img1, img2, img3, img4, img5, img6]
   };
 
   constructor(props) {
     super(props);
-    this.state = { nWrong: 0, guessed: new Set(), answer: "apple" };
+    this.state = { nWrong: 0, guessed: new Set(), answer: randomWord() };
     this.handleGuess = this.handleGuess.bind(this);
   }
   /** guessedWord: show current-state of word:
@@ -40,7 +42,6 @@ class Hangman extends Component {
       nWrong: st.nWrong + (st.answer.includes(ltr) ? 0 : 1)
     }));
   }
-
   /** generateButtons: return array of letter buttons to render */
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
@@ -72,9 +73,7 @@ class Hangman extends Component {
         }</p>
         
         <p className='Hangman-btns'>{ 
-          !gameOver 
-          ? this.generateButtons() 
-          : `You are a Loser💩`
+          !gameOver ? this.generateButtons() : `You are a Looouusssser💩`
         }</p>
 
       </div>

@@ -1,4 +1,4 @@
-var ENGLISH_WORDS = [
+var WORDLIST = [
   "their",
   "would",
   "about",
@@ -1611,7 +1611,7 @@ var ENGLISH_WORDS = [
 ];
 
 function randomWord() {
-  return ENGLISH_WORDS[Math.floor(Math.random() * ENGLISH_WORDS.length)];
+  return WORDLIST[Math.floor(Math.random() * WORDLIST.length)];
 }
 
 export { randomWord };
